@@ -36,6 +36,24 @@
   flex-direction: column;
 }
 
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav {
+  height: 50px;
+  width: 100vw;
+  border-bottom: 3px solid green;
+  padding-left: 20%;
+}
+
+
+.nav-selection {
+  margin-top: 25px;
+  width: 200px;
+}
+
 .login-box__welcome-header {
   height: 25%;
   background-color: #DBE1E8;

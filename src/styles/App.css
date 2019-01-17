@@ -51,7 +51,7 @@
 
 .nav-selection {
   margin-top: 25px;
-  width: 200px;
+  width: 300px;
 }
 
 .login-box__welcome-header {
@@ -100,4 +100,100 @@
   height: 200px;
   width: 200px;
   margin-left: 150px;
+}
+
+.poll-list {
+  height: 800px;
+  width: 33%;
+  margin-left: 33%;
+  margin-right: 33%;
+  margin-top: 15px;
+  border: 2px solid black;
+}
+
+.question-header {
+  margin-bottom: 10px;
+}
+
+.question-type {
+  width: 50%;
+  height: 30px;
+  border-bottom: 2px solid black;
+  text-align: center;
+  padding-top: 12px;
+}
+
+.question-type:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.question-type--active {
+  color: teal;
+  background-color: rgb(201, 201, 201);
+  font-weight: bold;
+}
+
+.question-type:first-child {
+  border-right: 1px solid black;
+}
+
+
+.poll-group {
+  height: 100%;
+  margin: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.poll {
+  height: 200px;
+  width: 100%;
+  background-color: lightcoral;
+  border: 1px solid black;
+  margin-bottom: 10px;
+}
+
+.poll-header {
+  width: 100%;
+  height: 50px;
+  display: inline-block;
+  background-color: lightseagreen;
+}
+
+.poll-header--text {
+}
+
+.poll-question-group {
+  height: 100%;
+  position: relative;
+}
+
+.poll-question {
+  justify-content: space-around;
+  width: 69%;
+}
+
+.poll-avatar {
+  width: 30%;
+  height: 100%;
+  border-right: 1px solid black;
+  background-color: lightsteelblue;
+  position: relative;
+}
+
+.avatar {
+  position: absolute;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+  background-color: black;
+}
+
+.view-poll-btn {
+  width: 100%;
 }

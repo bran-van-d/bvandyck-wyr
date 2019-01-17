@@ -15,7 +15,7 @@ class App extends Component {
       <Router>
         <Fragment>
           <Nav />
-          <Route path='/' exact component={Login} />
+          <Route path='/login' exact component={Login} />
           <Route path='/new' exact component={NewPoll} />
           <Route path='/home' exact component={HomePage} />
           <Route path='/leaderboard' exact component={Leaderboard} />

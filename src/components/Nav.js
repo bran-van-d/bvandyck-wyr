@@ -5,7 +5,7 @@ export default function Nav() {
   return (
     <nav className='nav flex-row'>
         <div className="nav-selection">
-          <NavLink to='/' exact activeClassName='active'>
+          <NavLink to='/home' exact activeClassName='active'>
             Home
           </NavLink>
         </div>
@@ -22,6 +22,11 @@ export default function Nav() {
           </NavLink>
         </div>
 
+        <div className="nav-selection user-logout">
+          Hello, Name (Mini Avatar Here) Logout
+        </div>
     </nav>
+
+
   )
 }

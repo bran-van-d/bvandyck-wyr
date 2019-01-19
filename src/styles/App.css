@@ -216,3 +216,29 @@
   text-align: left;
   margin: 15px;
 }
+
+.leader-board-question-type {
+  width: 50%;
+  border-right: 1px solid black
+}
+
+.leader-board-score {
+  width: 20%;
+  text-align: center;
+  position: relative;
+}
+
+.score-header {
+  border-bottom: 1px solid black;
+}
+
+.leader-board-score__bubble {
+  height: 80px;
+  width: 80px;
+  background-color:aquamarine;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 65%;
+  transform: translate(-50%, -50%);
+}

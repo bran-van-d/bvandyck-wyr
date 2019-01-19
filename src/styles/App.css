@@ -197,3 +197,22 @@
 .view-poll-btn {
   width: 100%;
 }
+
+.new-poll {
+  height: 300px;
+  width: 33%;
+  margin-left: 33%;
+  margin-right: 33%;
+  margin-top: 15px;
+  border: 1px solid black;
+
+  text-align: center;
+}
+.new-poll-header {
+  border-bottom: 1px solid black;
+}
+
+.new-poll-question {
+  text-align: left;
+  margin: 15px;
+}

@@ -1,0 +1,48 @@
+
+.login-box__welcome-header {
+  height: 25%;
+  background-color: #DBE1E8;
+  border-bottom: 1px solid black;
+}
+
+.welcome-header__welcome-message {
+  text-align: center;
+}
+
+.login-box {
+  width: 500px;
+  height: 500px;
+  background-color:lightgrey;
+  border: 1px solid black;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -250px;
+  margin-left: -250px;
+}
+
+
+.login-box__select-user {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  text-align: center;
+} 
+
+.login-box__inner {
+  width: 400px;
+  height: 400px;
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -200px;
+  margin-left: -200px;
+}
+
+.react-redux-logo {
+  height: 200px;
+  width: 200px;
+  margin-left: 150px;
+}

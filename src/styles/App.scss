@@ -1,0 +1,40 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav {
+  height: 50px;
+  width: 100vw;
+  border-bottom: 3px solid green;
+  padding-left: 20%;
+}
+
+
+.nav-selection {
+  margin-top: 25px;
+  width: 300px;
+}
+
+@import './components/components-import';
+

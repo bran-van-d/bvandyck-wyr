@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import '../styles/App.css';
+import '../styles/App.scss';
 import Login from './Login';
 import HomePage from './Homepage';
 import Leaderboard from './Leaderboard';

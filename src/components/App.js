@@ -5,10 +5,15 @@ import HomePage from './Homepage';
 import Leaderboard from './Leaderboard';
 import NewPoll from './NewPoll';
 import Nav from './Nav';
+import { connect } from 'react-redux';
+import { handleInitialData } from '../actions/shared';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-
 class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(handleInitialData())
+  }
+
   render() {
     return (
 
@@ -26,4 +31,5 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App)
+

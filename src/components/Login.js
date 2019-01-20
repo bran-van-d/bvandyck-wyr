@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 
 class Login extends Component {
   render() {
+    console.log(this.props.users);
+
     return (
       <div className="login-box flex-column">
         <div className="login-box__welcome-header">
@@ -27,4 +31,10 @@ class Login extends Component {
   }
 }
 
-export default Login
+function mapStateToProps({ users }) {
+  return {
+    users
+  }
+}
+
+export default connect(mapStateToProps)(Login)

@@ -6,24 +6,33 @@ import Leaderboard from './Leaderboard';
 import NewPoll from './NewPoll';
 import Nav from './Nav';
 import { connect } from 'react-redux';
+import LoadingBar from 'react-redux-loading';
 import { handleInitialData } from '../actions/shared';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { isEmpty } from 'lodash';
 
 class App extends Component {
   componentDidMount() {
+    console.log(this.props)
     this.props.dispatch(handleInitialData())
   }
 
   render() {
     return (
-
       <Router>
         <Fragment>
-          <Nav />
-          <Route path='/login' exact component={Login} />
-          <Route path='/new' exact component={NewPoll} />
-          <Route path='/home' exact component={HomePage} />
-          <Route path='/leaderboard' exact component={Leaderboard} />
+          <LoadingBar />
+          <div className="container">
+            <Nav />
+            {this.props.loading === true
+            ? null
+            : <div>
+                <Route path='/' exact component={Login} />
+                <Route path='/new' exact component={NewPoll} />
+                <Route path='/home' exact component={HomePage} />
+                <Route path='/leaderboard' exact component={Leaderboard} />
+            </div>}
+          </div>
         </Fragment>
       </Router>
 
@@ -31,5 +40,11 @@ class App extends Component {
   }
 }
 
-export default connect()(App)
+function mapStateToProps( { users }) {
+  return {
+    loading: isEmpty(users)
+  }
+}
+
+export default connect(mapStateToProps)(App)
 

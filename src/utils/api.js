@@ -9,6 +9,6 @@ export function getInitialData() {
     _getUsers()
   ]).then(([users, questions]) => ({
     users,
-    questions
+    questions,
   }))
 }

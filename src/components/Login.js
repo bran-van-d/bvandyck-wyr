@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 
 class Login extends Component {
   render() {
-    console.log(this.props.users);
-
     return (
       <div className="login-box flex-column">
         <div className="login-box__welcome-header">
@@ -20,9 +18,10 @@ class Login extends Component {
 
           <h3 className="login-text"> Sign in</h3>
           <select>
-            <option value="" disabled selected> Select user </option>
-            <option> User 1</option>
-            <option> User 2</option>
+            <option value="" disabled defaultValue> Select user </option>
+            {this.props.users.map((user) => (
+              <option> {user.author} </option>
+            ))}
           </select>
           <button className="login-button"> Sign in </button>
         </div>
@@ -32,8 +31,9 @@ class Login extends Component {
 }
 
 function mapStateToProps({ users }) {
+  console.log(Object.values(users))
   return {
-    users
+    users: Object.values(users)
   }
 }
 

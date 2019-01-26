@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-
 class Login extends Component {
   render() {
     return (
@@ -9,7 +8,7 @@ class Login extends Component {
         <div className="login-box__welcome-header">
           <div className="welcome-header__welcome-message">
             <h3> Welcome to the Would You Rather App! </h3>
-            <p> Please sign in to continue </p> 
+            <p> Please sign in to continue </p>
           </div>
         </div>
 
@@ -20,7 +19,7 @@ class Login extends Component {
           <select>
             <option value="" disabled defaultValue> Select user </option>
             {this.props.users.map((user) => (
-              <option> {user.author} </option>
+              <option key={user.name}> {user.name} </option>
             ))}
           </select>
           <button className="login-button"> Sign in </button>

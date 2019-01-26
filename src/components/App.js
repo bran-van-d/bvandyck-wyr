@@ -40,11 +40,10 @@ class App extends Component {
   }
 }
 
-function mapStateToProps( { users }) {
+function mapStateToProps( { users, questions }) {
   return {
-    loading: isEmpty(users)
+    loading: isEmpty(users) || isEmpty(questions)
   }
 }
 
 export default connect(mapStateToProps)(App)
-

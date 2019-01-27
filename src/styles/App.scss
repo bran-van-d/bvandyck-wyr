@@ -36,5 +36,8 @@
   width: 300px;
 }
 
-@import './components/components-import';
+.score-card {
+  width: 70%;
+}
 
+@import './components/components-import';

@@ -10,7 +10,6 @@ import LoadingBar from 'react-redux-loading';
 import { handleInitialData } from '../actions/shared';
 import { BrowserRouter as Router, Route, Prompt } from 'react-router-dom';
 import { isEmpty } from 'lodash';
-import authedUser from '../reducers/authedUser';
 
 class App extends Component {
   componentDidMount() {

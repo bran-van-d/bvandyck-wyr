@@ -1,7 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { setAuthedUser } from '../actions/authedUser';
 
 class Login extends Component {
+  state = {
+    user: ''
+  }
+
+  handleChange = (e) => {
+    const user = e.target.value;
+
+    this.setState(() => ({
+      user
+    }))
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { user } = this.state;
+    const { dispatch } = this.props;
+
+    dispatch(setAuthedUser(user))
+
+    this.setState(() => ({
+      user: ''
+    }))
+  }
+
   render() {
     return (
       <div className="login-box flex-column">
@@ -16,13 +42,19 @@ class Login extends Component {
           <img src="/images/react-redux-icon.jpg" alt="Cannot find" height="200" width="200" className="react-redux-logo" />
 
           <h3 className="login-text"> Sign in</h3>
-          <select>
-            <option value="" disabled defaultValue> Select user </option>
-            {this.props.users.map((user) => (
-              <option key={user.name}> {user.name} </option>
-            ))}
-          </select>
-          <button className="login-button"> Sign in </button>
+          <form className='login-user' onSubmit={this.handleSubmit}>
+            <select onChange={this.handleChange}>
+              <option value="" defaultValue> Select user </option>
+              {this.props.users.map((user) => (
+                <option key={user.name}> {user.name} </option>
+              ))}
+            </select>
+            <button 
+              className="login-button"
+              type="submit">
+              Sign in 
+            </button>
+          </form>
         </div>
       </div>
     )

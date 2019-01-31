@@ -14,6 +14,7 @@ class PollList extends Component {
         <div className="poll-group">
           {this.props.questions.map((question) => (
             <Poll
+              key={question.id}
               id={question.id}
               author={question.author}
               avatar={this.props.users.find((user) => user.id === question.author).avatarURL}

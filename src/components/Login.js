@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
+import { withRouter } from 'react-router-dom';
 
 class Login extends Component {
   state = {
     user: ''
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(setAuthedUser(''))
   }
 
   handleChange = (e) => {
@@ -26,6 +32,11 @@ class Login extends Component {
     this.setState(() => ({
       user: ''
     }))
+
+    setTimeout(() => {
+      this.props.history.push('/home')
+    }, 500)
+
   }
 
   render() {
@@ -68,4 +79,4 @@ function mapStateToProps({ users }) {
   }
 }
 
-export default connect(mapStateToProps)(Login)
+export default withRouter(connect(mapStateToProps)(Login))

@@ -22,11 +22,11 @@ export default function Nav() {
           </NavLink>
         </div>
 
-        <div className="nav-selection user-logout">
-          Hello, Name (Mini Avatar Here) Logout
+        <div className="nav-selection">
+          <NavLink to='/' exact activeClassName='active'>
+            Logout
+          </NavLink>
         </div>
     </nav>
-
-
   )
 }

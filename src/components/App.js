@@ -10,6 +10,7 @@ import LoadingBar from 'react-redux-loading';
 import { handleInitialData } from '../actions/shared';
 import { BrowserRouter as Router, Route, Prompt } from 'react-router-dom';
 import { isEmpty } from 'lodash';
+import PollDetail from './PollDetail';
 
 class App extends Component {
   componentDidMount() {
@@ -33,6 +34,7 @@ class App extends Component {
                 <Route path='/new' exact component={NewPoll} />
                 <Route path='/home' exact component={HomePage} />
                 <Route path='/leaderboard' exact component={Leaderboard} />
+                <Route path='/question/:id' exact component={PollDetail} />
             </div>}
           </div>
 

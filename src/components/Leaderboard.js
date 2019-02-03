@@ -9,7 +9,7 @@ class Leaderboard extends Component {
     return (
       <div>
         {users.map((user) => (
-          <div className="poll-list poll-list--leaderboard flex-column">
+          <div key={user.id} className="poll-list poll-list--leaderboard flex-column">
             <div className="poll flex-column">
               <div className="poll-header">
                 <h3 className="poll-header--text"> {user.name} asks: </h3>

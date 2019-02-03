@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+
 
 class Poll extends Component {
+  handleClick(id) {
+    debugger;
+    this.props.history.push(`question/${id}`);
+  }
+
+
   render() {
     const { id, author, avatar, questionText } = this.props;
     
@@ -24,13 +32,12 @@ class Poll extends Component {
           <div className="poll-question flex-column">
             <h3> Would you rather </h3>
             <span> ...{questionText}...</span>
-            <button className="view-poll-btn"> View Poll </button>
+            <button onClick={() => this.handleClick(id)} className="view-poll-btn"> View Poll </button>
           </div>
         </div>
-
       </div>
     )
   }
 }
 
-export default Poll
+export default withRouter(Poll)

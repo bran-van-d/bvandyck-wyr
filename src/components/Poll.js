@@ -4,14 +4,13 @@ import { withRouter } from 'react-router-dom';
 
 class Poll extends Component {
   handleClick(id) {
-    debugger;
     this.props.history.push(`question/${id}`);
   }
 
 
   render() {
     const { id, author, avatar, questionText } = this.props;
-    
+
     return (
       <div key={id} className="poll flex-column">
         <div className="poll-header">

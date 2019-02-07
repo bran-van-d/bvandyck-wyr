@@ -2,3 +2,18 @@
   margin-left: 33%;
   width: 33%;
 }
+
+.poll-vote-detail {
+  height: 500px;
+}
+
+.vote-score {
+  height: 50%;
+  width: 100%;
+  border: 1px solid black;
+  align-items: center;
+}
+
+.poll-question-vote {
+  justify-content: inherit;
+}

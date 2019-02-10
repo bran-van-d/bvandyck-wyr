@@ -8,10 +8,11 @@ export function receiveQuestions(questions) {
   }
 }
 
-export function updateVotes(question, voteOption) {
+export function updateVotes(question, voteOption, authedUser) {
   return {
     type: UPDATE_VOTES,
     question,
-    voteOption
+    voteOption,
+    authedUser
   }
 }

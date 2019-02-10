@@ -12,9 +12,9 @@ class PollDetail extends Component {
       e.preventDefault();
 
       const { voteOption } = this.state;
-      const { dispatch, question } = this.props
+      const { dispatch, question, authedUser } = this.props
 
-      dispatch(updateVotes(question, voteOption));
+      dispatch(updateVotes(question, voteOption, authedUser));
 
       this.setState(() => ({
         voteOption: '',
@@ -31,15 +31,18 @@ class PollDetail extends Component {
 
   render() {
     const { user, question, authedUser } = this.props;
+
     const { id, author, optionOne, optionTwo } = question;
+
+    const authedUserAnswered = optionOne.votes.includes(authedUser.name) || optionTwo.votes.includes(authedUser.name);
 
     const optionOneVotes = optionOne.votes.length;
     const optionTwoVotes = optionTwo.votes.length;
 
     const voteTotal = optionOneVotes + optionTwoVotes
 
-    const optionOnePercent = optionOneVotes === 0 ? 0 : (voteTotal / optionOneVotes) * 100;
-    const optionTwoPercent = optionTwoVotes === 0 ? 0 : (voteTotal / optionTwoVotes) * 100;
+    const optionOnePercent = optionOneVotes === 0 ? 0 : (optionOneVotes/ voteTotal) * 100;
+    const optionTwoPercent = optionTwoVotes === 0 ? 0 : (optionTwoVotes /voteTotal) * 100;
 
     return (
       <div className="poll-details">
@@ -61,7 +64,7 @@ class PollDetail extends Component {
             </div>
             <div className="poll-question poll-question-vote flex-column">
               <h2> RESULTS </h2>
-              {user.name === authedUser
+              {user.name === authedUser || authedUserAnswered
               ? <div className="flex-column">
                   <div className="vote-score flex-column">
                     <span> {optionOne.text} </span>
@@ -72,7 +75,7 @@ class PollDetail extends Component {
                   <div className="vote-score flex-column">
                     <span> {optionTwo.text} </span>
                     <progress max="100" value={optionTwoPercent}></progress>
-                    <span> {optionOneVotes} out of {voteTotal} votes </span>
+                    <span> {optionTwoVotes} out of {voteTotal} votes </span>
                   </div>
                 </div>
               : <div className="flex-column">
@@ -102,7 +105,7 @@ function mapStateToProps( { questions, authedUser, users }, props) {
   return {
     question: questionMap.find((quest) => quest.id === id),
     user: userMap.find((u) => u.id === author),
-    authedUser
+    authedUser: {name: 'sarahedo'}
   }
 }
 

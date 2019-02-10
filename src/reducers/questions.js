@@ -11,11 +11,16 @@ export default function questions(state = {}, action) {
     default:
       return state;
     case UPDATE_VOTES:
-      debugger;
+      const { question, voteOption, authedUser } = action;
+
       return {
         ...state,
-        [action.id]: {
-          [action.option]: state[action.id].option.concat([action.user])
+        [question.id]: {
+          ...state[question.id],
+          voteOption: [
+            state[question.id][voteOption].text,
+            state[question.id][voteOption].votes = state[question.id][voteOption].votes.concat([authedUser.name])
+          ]
         }
       }
   }

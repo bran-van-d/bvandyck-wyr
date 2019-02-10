@@ -1,7 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { updateVotes } from '../actions/questions';
+
 class PollDetail extends Component {
+  state = {
+    voteOption: ''
+  }
+
+  handleSubmit = (e) => {
+      e.preventDefault();
+
+      const { voteOption } = this.state;
+      const { dispatch, question } = this.props
+
+      dispatch(updateVotes(question, voteOption));
+
+      this.setState(() => ({
+        voteOption: '',
+      }))
+    }
+
+  handleChange = (e) => {
+    const voteOption = e.target.value;
+
+    this.setState(() => ({
+      voteOption
+    }))
+  }
+
   render() {
     const { user, question, authedUser } = this.props;
     const { id, author, optionOne, optionTwo } = question;
@@ -50,12 +77,12 @@ class PollDetail extends Component {
                 </div>
               : <div className="flex-column">
                   <h3> Would you rather </h3>
-                    <form>
-                      <input type="radio" name="optionOne" value={optionOne.text} /> {optionOne.text} <br/>
-                      <input type="radio" name="optionTwo" value={optionTwo.text} /> {optionTwo.text} <br/>
+                    <form onSubmit={this.handleSubmit}>
+                      <input onChange={this.handleChange} type="radio" name="optionOne" value="optionOne" /> {optionOne.text} <br/>
+                      <input onChange={this.handleChange} type="radio" name="optionTwo" value="optionTwo" /> {optionTwo.text} <br/>
+                      <button className="view-poll-btn"> Submit </button>
                     </form>
 
-                    <button className="view-poll-btn"> Submit </button>
                 </div>}
             </div>
           </div>

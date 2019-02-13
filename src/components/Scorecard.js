@@ -38,7 +38,4 @@ class Scorecard extends Component {
   }
 }
 
-
-
-
 export default Scorecard

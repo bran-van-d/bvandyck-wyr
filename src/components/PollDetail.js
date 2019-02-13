@@ -105,7 +105,7 @@ function mapStateToProps( { questions, authedUser, users }, props) {
   return {
     question: questionMap.find((quest) => quest.id === id),
     user: userMap.find((u) => u.id === author),
-    authedUser: {name: 'sarahedo'}
+    authedUser
   }
 }
 

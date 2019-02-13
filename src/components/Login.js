@@ -57,7 +57,7 @@ class Login extends Component {
             <select onChange={this.handleChange}>
               <option value="" defaultValue> Select user </option>
               {this.props.users.map((user) => (
-                <option key={user.name}> {user.name} </option>
+                <option key={user.name}> {user.id} </option>
               ))}
             </select>
             <button 

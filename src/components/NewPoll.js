@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleAddPoll } from '../actions/questions'
+import { Redirect } from 'react-router-dom';
+
 
 class NewPoll extends Component {
   state = {
     optionOne: '',
-    optionTwo: ''
+    optionTwo: '',
+    toHome: false
   }
 
   handleChange = (optionType, e) => {
@@ -28,17 +31,21 @@ class NewPoll extends Component {
 
     const { optionOne, optionTwo } = this.state;
     const { dispatch } = this.props
-    const author = 'sarahedo';
 
-    dispatch(handleAddPoll(optionOne, optionTwo, author));
+    dispatch(handleAddPoll(optionOne, optionTwo));
 
     this.setState(() => ({
       optionOne: '',
-      optionTwo: ''
+      optionTwo: '',
+      toHome: true
     }))
   }
 
   render() {
+    if (this.state.toHome === true) {
+      return <Redirect to='/home' />
+    }
+
     return (
       <div className="new-poll">
         <h1 className="new-poll-header"> Create New Question </h1>

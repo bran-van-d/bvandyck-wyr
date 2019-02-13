@@ -29,14 +29,14 @@ export function updateVotes(question, voteOption, authedUser) {
   }
 }
 
-export function handleAddPoll(optionOneText, optionTwoText, author) {
+export function handleAddPoll(optionOneText, optionTwoText) {
   return (dispatch, getState) => {
-    // const { authedUser } = getState();
+    const { authedUser } = getState();
 
     dispatch(showLoading());
 
     return saveQuestion({
-      author,
+      author: authedUser,
       optionOneText,
       optionTwoText
     })

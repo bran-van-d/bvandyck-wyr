@@ -14,15 +14,14 @@ class PollList extends Component {
   }
 
   render() {
-    const { questions } = this.props;
-    const currentUser = 'sarahedo';
+    const { questions, authedUser } = this.props;
 
     const answers = [];
     const noAnswer = [];
 
     questions.forEach((question) => {
-      const votedOne = question.optionOne.votes.includes(currentUser);
-      const votedTwo = question.optionTwo.votes.includes(currentUser);
+      const votedOne = question.optionOne.votes.includes(authedUser);
+      const votedTwo = question.optionTwo.votes.includes(authedUser);
 
       if(votedOne || votedTwo) {
         answers.push(question);

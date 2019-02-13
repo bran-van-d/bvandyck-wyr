@@ -16,8 +16,6 @@ class Scorecard extends Component {
 
     const score = answeredQuestions + createdQuestions;
 
-    debugger;
-
     return (
       <div className="score-card flex-row">
         <div className="leader-board-question-type flex-column">

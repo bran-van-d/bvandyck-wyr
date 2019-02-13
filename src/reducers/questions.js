@@ -17,23 +17,13 @@ export default function questions(state = {}, action) {
         ...state,
         [question.id]: {
           ...state[question.id],
-          voteOption: [
+          [question[voteOption]]: [
             state[question.id][voteOption].text,
             state[question.id][voteOption].votes = state[question.id][voteOption].votes.concat([authedUser.name])
           ]
         }
       }
     case ADD_QUESTION:
-      // let replyingTo = {}
-      // if (tweet.replyingTo !== null) {
-      //   replyingTo = {
-      //     [tweet.replyingTo]: {
-      //       ...state[tweet.replyingTo],
-      //       replies: state[tweet.replyingTo].replies.concat([tweet.id])
-      //     }
-      //   }
-      // }
-
       return {
         ...state,
         [action.question.id]: action.question

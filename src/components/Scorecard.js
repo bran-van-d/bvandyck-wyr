@@ -4,12 +4,19 @@ class Scorecard extends Component {
   render() {
     const { user, questions } = this.props;
 
-    const answeredQuestions = user.questions.length;
-    const createdQuestions = questions.filter((question) => (
-      user.id === question.author
-    )).length;
+    const currentUser = user.id;
+    const createdQuestions = user.questions.length;
+
+    const answeredQuestions = questions.filter((question) => {
+      const votedOne = question.optionOne.votes.includes(currentUser);
+      const votedTwo = question.optionTwo.votes.includes(currentUser);
+
+      return votedOne || votedTwo;
+    }).length;
 
     const score = answeredQuestions + createdQuestions;
+
+    debugger;
 
     return (
       <div className="score-card flex-row">

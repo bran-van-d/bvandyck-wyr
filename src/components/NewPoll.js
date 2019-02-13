@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { handleAddPoll } from '../actions/questions'
 
 class NewPoll extends Component {

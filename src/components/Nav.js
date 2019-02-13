@@ -1,32 +1,41 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
-export default function Nav() {
-  return (
-    <nav className='nav flex-row'>
-        <div className="nav-selection">
-          <NavLink to='/home' exact activeClassName='active'>
-            Home
-          </NavLink>
-        </div>
+class Nav extends Component {
+  render() {
+    if(this.props.notLoggedIn) {
+      return <Redirect to="/" />
+    }
 
-        <div className="nav-selection">
-          <NavLink to='/new' exact activeClassName='active'>
-            New Question
-          </NavLink>
-        </div>
+    return (
+      <nav className='nav flex-row'>
+          <div className="nav-selection">
+            <NavLink to='/home' exact activeClassName='active'>
+              Home
+            </NavLink>
+          </div>
 
-        <div className="nav-selection">
-          <NavLink to='/leaderboard' exact activeClassName='active'>
-            Leaderboard
-          </NavLink>
-        </div>
+          <div className="nav-selection">
+            <NavLink to='/new' exact activeClassName='active'>
+              New Question
+            </NavLink>
+          </div>
 
-        <div className="nav-selection">
-          <NavLink to='/' exact activeClassName='active'>
-            Logout
-          </NavLink>
-        </div>
-    </nav>
-  )
+          <div className="nav-selection">
+            <NavLink to='/leaderboard' exact activeClassName='active'>
+              Leaderboard
+            </NavLink>
+          </div>
+
+          <div className="nav-selection">
+            <NavLink to='/' exact activeClassName='active'>
+              Logout
+            </NavLink>
+          </div>
+      </nav>
+    )
+  }
 }
+
+export default Nav

@@ -1,5 +1,5 @@
-import { RECEIVE_QUESTIONS } from '../actions/questions';
-import { UPDATE_VOTES } from '../actions/questions';
+import { RECEIVE_QUESTIONS, UPDATE_VOTES, ADD_QUESTION } from '../actions/questions';
+
 
 export default function questions(state = {}, action) {
   switch(action.type) {
@@ -22,6 +22,21 @@ export default function questions(state = {}, action) {
             state[question.id][voteOption].votes = state[question.id][voteOption].votes.concat([authedUser.name])
           ]
         }
+      }
+    case ADD_QUESTION:
+      // let replyingTo = {}
+      // if (tweet.replyingTo !== null) {
+      //   replyingTo = {
+      //     [tweet.replyingTo]: {
+      //       ...state[tweet.replyingTo],
+      //       replies: state[tweet.replyingTo].replies.concat([tweet.id])
+      //     }
+      //   }
+      // }
+
+      return {
+        ...state,
+        [action.question.id]: action.question
       }
   }
 }

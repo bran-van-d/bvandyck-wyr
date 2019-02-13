@@ -32,7 +32,7 @@ class NewPoll extends Component {
     const { optionOne, optionTwo } = this.state;
     const { dispatch } = this.props
 
-    dispatch(handleAddPoll(optionOne, optionTwo));
+    dispatch(handleAddPoll(optionOne, optionTwo))
 
     this.setState(() => ({
       optionOne: '',

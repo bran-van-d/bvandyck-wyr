@@ -70,12 +70,16 @@ class PollDetail extends Component {
                     <span> {optionOne.text} </span>
                     <progress max="100" value={optionOnePercent}></progress>
                     <span> {optionOneVotes} out of {voteTotal} votes </span>
+
+                    <h5> {optionOne.votes.includes(authedUser) ? "YOUR CHOICE!" : ''} </h5>
                   </div>
 
                   <div className="vote-score flex-column">
                     <span> {optionTwo.text} </span>
                     <progress max="100" value={optionTwoPercent}></progress>
                     <span> {optionTwoVotes} out of {voteTotal} votes </span>
+                    <h5> {optionTwo.votes.includes(authedUser) ? "YOUR CHOICE!" : ''} </h5>
+
                   </div>
                 </div>
               : <div className="flex-column">

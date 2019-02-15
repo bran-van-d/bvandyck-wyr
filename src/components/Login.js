@@ -35,7 +35,7 @@ class Login extends Component {
 
     setTimeout(() => {
       this.props.history.push('/home')
-    }, 500)
+    }, 100)
 
   }
 

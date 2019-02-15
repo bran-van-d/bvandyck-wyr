@@ -28,7 +28,8 @@ class Nav extends Component {
             </NavLink>
           </div>
 
-          <div className="nav-selection">
+          <div className="nav-selection flex-row">
+            <span className="logout-username"> {this.props.authedUser} </span>
             <NavLink to='/' exact activeClassName='active'>
               Logout
             </NavLink>

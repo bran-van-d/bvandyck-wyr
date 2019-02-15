@@ -19,14 +19,14 @@ class App extends Component {
   }
 
   render() {
-    const { loading, notLoggedIn } = this.props;
+    const { loading, notLoggedIn, authedUser } = this.props;
 
     return (
       <Router>
         <Fragment>
           <LoadingBar />
           <div className="container">
-            <Nav notLoggedIn={notLoggedIn} />
+            <Nav notLoggedIn={notLoggedIn} authedUser={authedUser} />
             {loading === true
             ? null
             : <div>
@@ -54,7 +54,8 @@ class App extends Component {
 function mapStateToProps( { users, questions, authedUser }) {
   return {
     loading: isEmpty(users) || isEmpty(questions),
-    notLoggedIn: authedUser === ''
+    notLoggedIn: authedUser === '',
+    authedUser
   }
 }
 

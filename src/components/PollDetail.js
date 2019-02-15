@@ -34,7 +34,7 @@ class PollDetail extends Component {
 
     const { id, author, optionOne, optionTwo } = question;
 
-    const authedUserAnswered = optionOne.votes.includes(authedUser.name) || optionTwo.votes.includes(authedUser.name);
+    const authedUserAnswered = optionOne.votes.includes(authedUser) || optionTwo.votes.includes(authedUser);
 
     const optionOneVotes = optionOne.votes.length;
     const optionTwoVotes = optionTwo.votes.length;

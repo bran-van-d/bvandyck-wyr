@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { isEmpty } from 'lodash';
 
 class Nav extends Component {
   render() {
-    if(this.props.notLoggedIn) {
-      return <Redirect to="/" />
-    }
+    console.log(this.props);
 
     return (
       <nav className='nav flex-row'>
@@ -17,8 +18,8 @@ class Nav extends Component {
           </div>
 
           <div className="nav-selection">
-            <NavLink to='/new' exact activeClassName='active'>
-              New Question
+            <NavLink to='/add' exact activeClassName='active'>
+              Add Question
             </NavLink>
           </div>
 
@@ -39,4 +40,12 @@ class Nav extends Component {
   }
 }
 
-export default Nav
+function mapStateToProps({ users, questions, authedUser }) {
+  return {
+    loading: isEmpty(users) || isEmpty(questions),
+    notLoggedIn: authedUser === '',
+    authedUser
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(Nav))

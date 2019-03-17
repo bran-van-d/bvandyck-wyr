@@ -9,15 +9,21 @@ class PollList extends Component {
 
   changeTab(tabName) {
     this.setState(() => ({
-      activeTab: tabName
-    }))
+      activeTab: tabName,
+      sortByTimeStamp: function(a, b) {
+        return b.timestamp - a.timestamp
+      }
+     }))
   }
+
+
 
   render() {
     const { questions, authedUser } = this.props;
+    const { activeTab, sortByTimeStamp } = this.state;
 
-    const answers = [];
-    const noAnswer = [];
+    let answers = [];
+    let noAnswer = [];
 
     questions.forEach((question) => {
       const votedOne = question.optionOne.votes.includes(authedUser);
@@ -31,25 +37,30 @@ class PollList extends Component {
       }
     });
 
+    console.log(answers.sort(sortByTimeStamp))
+    answers.forEach((ans) => {
+      console.log(Date(ans.timestamp));
+    })
+
     return (
       <div className="poll-list flex-column">
         <div className="question-header flex-row">
           <div 
             onClick={() => this.changeTab('UNANSWERED')} 
-            className={this.state.activeTab === 'UNANSWERED' ? "question-type question-type--active" : "question-type"  }
+            className={activeTab === 'UNANSWERED' ? "question-type question-type--active" : "question-type"  }
             > Unanswered Questions 
             </div>
 
           <div 
             onClick={() => this.changeTab('ANSWERED')} 
-            className={this.state.activeTab === 'ANSWERED' ? "question-type question-type--active" : "question-type"}
+            className={activeTab === 'ANSWERED' ? "question-type question-type--active" : "question-type"}
             > Answered Questions 
           </div>
         </div>
 
         <div className="poll-group">
-          {this.state.activeTab === 'ANSWERED'
-          ? answers.map((question) => (
+          {activeTab === 'ANSWERED'
+          ? answers.sort(sortByTimeStamp).map((question) => (
             <Poll
               key={question.id}
               id={question.id}
@@ -58,7 +69,7 @@ class PollList extends Component {
               questionText={question.optionOne.text}
               />
           ))
-          : noAnswer.map((question) => (
+          : noAnswer.sort(sortByTimeStamp).map((question) => (
             <Poll
               key={question.id}
               id={question.id}

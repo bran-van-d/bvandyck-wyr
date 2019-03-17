@@ -8,9 +8,11 @@ import Nav from './Nav';
 import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading';
 import { handleInitialData } from '../actions/shared';
+import { Switch } from 'react-router';
 import { BrowserRouter as Router, Route, Prompt } from 'react-router-dom';
 import { isEmpty } from 'lodash';
 import PollDetail from './PollDetail';
+import NoRouteMatch from './NoRouteMatch';
 
 class App extends Component {
   componentDidMount() {
@@ -30,11 +32,14 @@ class App extends Component {
             {loading === true
             ? null
             : <div>
-                <Route path='/' exact component={Login} />
-                <Route path='/new' exact component={NewPoll} />
-                <Route path='/home' exact component={HomePage} />
-                <Route path='/leaderboard' exact component={Leaderboard} />
-                <Route path='/question/:id' exact component={PollDetail} />
+                <Switch>
+                  <Route path='/' exact component={Login} />
+                  <Route path='/add' exact component={NewPoll} />
+                  <Route path='/home' exact component={HomePage} />
+                  <Route path='/leaderboard' exact component={Leaderboard} />
+                  <Route path='/question/:id' exact component={PollDetail} />
+                  <Route component={NoRouteMatch} />
+                </Switch>
             </div>}
           </div>
 

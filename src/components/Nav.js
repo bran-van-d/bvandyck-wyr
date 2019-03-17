@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { isEmpty } from 'lodash';
 
 class Nav extends Component {
   render() {
-    console.log(this.props);
 
-    return (
+  return (
       <nav className='nav flex-row'>
           <div className="nav-selection">
             <NavLink to='/home' exact activeClassName='active'>
@@ -48,4 +45,4 @@ function mapStateToProps({ users, questions, authedUser }) {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Nav))
+export default connect(mapStateToProps)(Nav)

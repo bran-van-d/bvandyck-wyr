@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import { updateVotes } from '../actions/questions';
 
@@ -31,6 +32,15 @@ class PollDetail extends Component {
 
   render() {
     const { user, question, authedUser } = this.props;
+
+    if(question === undefined) {
+      return <Redirect to="/404" />
+    }
+
+    if (authedUser === '' || authedUser === null) {
+      alert('Please log in.')
+      return <Redirect to="/" />
+    }
 
     const { id, author, optionOne, optionTwo } = question;
 
@@ -104,10 +114,12 @@ function mapStateToProps( { questions, authedUser, users }, props) {
   const { id } = props.match.params;
   const questionMap = Object.values(questions);
   const userMap = Object.values(users);
-  const author = questionMap.find((quest) => quest.id === id).author;
+  const question = questionMap.find((quest) => quest.id === id)
+
+  const author = question === undefined ? '' : question.author;
 
   return {
-    question: questionMap.find((quest) => quest.id === id),
+    question,
     user: userMap.find((u) => u.id === author),
     authedUser
   }

@@ -9,14 +9,13 @@ import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading';
 import { handleInitialData } from '../actions/shared';
 import { Switch } from 'react-router';
-import { BrowserRouter as Router, Route, Prompt } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { isEmpty } from 'lodash';
 import PollDetail from './PollDetail';
 import NoRouteMatch from './NoRouteMatch';
 
 class App extends Component {
   componentDidMount() {
-    console.log(this.props)
     this.props.dispatch(handleInitialData())
   }
 
@@ -42,13 +41,6 @@ class App extends Component {
                 </Switch>
             </div>}
           </div>
-
-          <Prompt
-            when={notLoggedIn}
-            message={location =>
-              `Please log in before you go to ${location.pathname}`}
-           />
-        
         </Fragment>
       </Router>
 

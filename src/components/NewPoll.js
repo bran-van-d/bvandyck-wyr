@@ -46,6 +46,11 @@ class NewPoll extends Component {
       return <Redirect to='/home' />
     }
 
+    if (this.props.authedUser === '' || this.props.authedUser === null) {
+      alert('Please log in.')
+      return <Redirect to="/" />
+    }
+
     return (
       <div className="new-poll">
         <h1 className="new-poll-header"> Create New Question </h1>
@@ -68,4 +73,11 @@ class NewPoll extends Component {
   }
 }
 
-export default connect()(NewPoll)
+function mapStateToProps({ authedUser }) {
+  return {
+    notLoggedIn: authedUser === '' || authedUser === null,
+    authedUser
+  }
+}
+
+export default connect(mapStateToProps)(NewPoll)

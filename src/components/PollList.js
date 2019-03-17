@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Poll from './Poll';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 class PollList extends Component {
   state = {
@@ -22,6 +23,11 @@ class PollList extends Component {
     const { questions, authedUser } = this.props;
     const { activeTab, sortByTimeStamp } = this.state;
 
+    if (authedUser === '' || authedUser === null) {
+      alert('Please log in.')
+      return <Redirect to="/" />
+    }
+
     let answers = [];
     let noAnswer = [];
 
@@ -36,11 +42,6 @@ class PollList extends Component {
         noAnswer.push(question);
       }
     });
-
-    console.log(answers.sort(sortByTimeStamp))
-    answers.forEach((ans) => {
-      console.log(Date(ans.timestamp));
-    })
 
     return (
       <div className="poll-list flex-column">

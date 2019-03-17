@@ -53,6 +53,7 @@ class PollDetail extends Component {
 
     const optionOnePercent = optionOneVotes === 0 ? 0 : (optionOneVotes/ voteTotal) * 100;
     const optionTwoPercent = optionTwoVotes === 0 ? 0 : (optionTwoVotes /voteTotal) * 100;
+    const noOptionSelected = this.state.voteOption === '';
 
     return (
       <div className="poll-details">
@@ -97,7 +98,7 @@ class PollDetail extends Component {
                     <form onSubmit={this.handleSubmit}>
                       <input onChange={this.handleChange} type="radio" name="optionOne" value="optionOne" /> {optionOne.text} <br/>
                       <input onChange={this.handleChange} type="radio" name="optionTwo" value="optionTwo" /> {optionTwo.text} <br/>
-                      <button className="view-poll-btn"> Submit </button>
+                      <button disabled={noOptionSelected} className="view-poll-btn"> Submit </button>
                     </form>
 
                 </div>}

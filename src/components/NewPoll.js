@@ -42,7 +42,9 @@ class NewPoll extends Component {
   }
 
   render() {
-    if (this.state.toHome === true) {
+    const { toHome, optionOne, optionTwo } = this.state;
+
+    if (toHome === true) {
       return <Redirect to='/home' />
     }
 
@@ -50,6 +52,8 @@ class NewPoll extends Component {
       alert('Please log in.')
       return <Redirect to="/" />
     }
+
+    const incompleteEntries = optionTwo === '' || optionOne === '';
 
     return (
       <div className="new-poll">
@@ -63,7 +67,7 @@ class NewPoll extends Component {
             <input onChange={(e) => this.handleChange('optionOne', e)} placeholder="Enter Option One text here"/>
             <span> OR </span>
             <input onChange={(e) => this.handleChange('optionTwo', e)}placeholder="Enter Option Two text here" />
-            <button className="submit-poll-btn"> Submit </button>
+            <button disabled={incompleteEntries} className="submit-poll-btn"> Submit </button>
           </form>
 
         </div>

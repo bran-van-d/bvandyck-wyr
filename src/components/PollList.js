@@ -5,19 +5,17 @@ import { Redirect } from 'react-router-dom';
 
 class PollList extends Component {
   state = {
-    activeTab: 'UNANSWERED'
+    activeTab: 'UNANSWERED',
+    sortByTimeStamp: function(a, b) {
+      return b.timestamp - a.timestamp
+    }
   }
 
   changeTab(tabName) {
     this.setState(() => ({
       activeTab: tabName,
-      sortByTimeStamp: function(a, b) {
-        return b.timestamp - a.timestamp
-      }
      }))
   }
-
-
 
   render() {
     const { questions, authedUser } = this.props;

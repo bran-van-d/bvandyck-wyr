@@ -26,6 +26,7 @@ class Login extends Component {
 
     const { user } = this.state;
     const { dispatch } = this.props;
+    const { state } = this.props.location;
 
     dispatch(setAuthedUser(user))
 
@@ -33,8 +34,12 @@ class Login extends Component {
       user: ''
     }))
 
+    debugger;
+
+    const transitionUrl = (state) ? state.redirectUrl : '/home';
+
     setTimeout(() => {
-      this.props.history.push('/home')
+      this.props.history.push(transitionUrl)
     }, 100)
 
   }

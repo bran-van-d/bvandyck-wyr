@@ -50,7 +50,7 @@ class NewPoll extends Component {
 
     if (this.props.authedUser === '' || this.props.authedUser === null) {
       alert('Please log in.')
-      return <Redirect to="/" />
+      return <Redirect to={{pathname: '/', state: {redirectUrl: '/add'}}} />
     }
 
     const incompleteEntries = optionTwo === '' || optionOne === '';

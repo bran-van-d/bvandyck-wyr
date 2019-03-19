@@ -25,7 +25,7 @@ class PollList extends Component {
 
     if (authedUser === '' || authedUser === null) {
       alert('Please log in.')
-      return <Redirect to="/" />
+      return <Redirect to={{ pathname: '/', state: { redirectUrl: '/home' } }} />
     }
 
     let answers = [];

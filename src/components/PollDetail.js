@@ -39,7 +39,7 @@ class PollDetail extends Component {
 
     if (authedUser === '' || authedUser === null) {
       alert('Please log in.')
-      return <Redirect to="/" />
+      return <Redirect to={{ pathname: '/', state: { redirectUrl: `/question/${question.id}` } }} />
     }
 
     const { id, author, optionOne, optionTwo } = question;
